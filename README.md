@@ -1,12 +1,13 @@
 # PSB_FamilyApp
 
 Family App este o aplicatie web-based in care mai multe familii isi pot gestiona mai bine activitatile, bugetul si timpul liber.
+
 Roluri in echipa:
-Irina Covrescu – Business analyst
-Florin Smeu - Designer
-Robert Rada – Front-end Developer, QA Engineer
-Radu Nechita – Back-end Developer
-Robert Roman - Devops Engineer
+* Irina Covrescu – Business analyst
+* Florin Smeu - Designer
+* Robert Rada – Front-end Developer, QA Engineer
+* Radu Nechita – Back-end Developer
+* Robert Roman - Devops Engineer
 
 Functionalitati:
 
