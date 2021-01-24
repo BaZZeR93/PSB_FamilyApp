@@ -1,0 +1,143 @@
+/* You can add global styles to this file, and also import other style files */
+html, body{
+  font-family: raleway-extrabold;
+  height: 100%;
+}
+
+h1,h2,h3,h5,h6 {
+  color: #7C7C7C;
+}
+
+.column {
+  flex: 50%
+}
+
+.vertical-center {
+  min-height: 80%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 80vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+.btn-primary {
+  background-color: #22B573 !important;
+  border-radius: 30px !important;
+  outline: none !important;
+  border-style: none !important;
+  border: none !important;
+  padding-top: 0.1em;
+  padding-right: 1em;
+  padding-bottom: 0.1em;
+  padding-left: 1em;
+  margin-bottom: 30px;
+}
+
+.btn-primary:focus {
+  background-color: #1F8956 !important;
+  transform: scale(0.8) !important;
+}
+
+.btn-primary:hover {
+  background-color: #1F8956 !important;
+}
+
+.link {
+  color: #22B573 !important;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #F2F2F2;
+}
+
+.flex {
+  display: flex;
+}
+
+.form-control:not(focus) .form-control:valid, .form-control:invalid, .form-control:visited, .form-control:not(:visited) {
+  background-color: #F2F2F2 !important;
+  border-radius: 30px !important;
+  outline: none !important;
+  border-style: none;
+  border: none;
+}
+
+input:not(:placeholder-shown) {
+  background-color:  #F2F2F2!important;
+}
+
+
+input:placeholder-shown {
+  background-color:  #F2F2F2!important;
+}
+
+.flex-vertical-centered {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  color: #4D4D4D;
+  font-size: xx-large;
+  text-align: center;
+
+}
+
+.title-border {
+  border-bottom: 1px solid #DDDDDD;
+}
+
+.screen-full-height {
+  height: 100vh;
+}
+
+.is-invalid {
+  border-left: 5px solid #D9534F;
+}
+
+.selected-text {
+  font-family: raleway-extrabold !important;
+  text-align: left;
+  color: #666666 !important;
+}
+
+.regular-text {
+  font-family: raleway-extrabold !important;
+  text-align: left;
+  color: #999999 !important;
+  font-size: 14px;
+}
+
+span {
+  font-family: raleway-extrabold !important;
+}
+
+@font-face {
+  font-family: raleway-black;
+  src: url(assets/font/Raleway-Black.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: raleway-extrabold;
+  src: url(assets/font/Raleway-ExtraBold.ttf) format("truetype");
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+  border-color: none;
+  box-shadow: none;
+  outline: 0 none;
+}

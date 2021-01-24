@@ -1,0 +1,101 @@
+
+<div class="row w-100 p-3">
+  <div class="column">
+    <div class="container-center">
+    <div class="title">FamilyApp</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+</div>
+<div class="row container-center vertical-center">
+  <div class="col-xs-10 col-sm-6 align-self-center">
+    <div class = "row onboarding-container">
+      <div class="selected-text">
+        <h4>Welcome to the nicest family app</h4>
+      </div>
+    </div>
+
+    <div class = "onboarding-container regular-text">      
+      <div class = "onboarding-text">* Share photos and memories with your dear ones</div>
+      <div class = "onboarding-text">* Manage expenses at ease</div>
+      <div class = "onboarding-text">* Store photo albums</div>
+      <div class = "onboarding-text">* Schedule the tasks and events of your family</div>
+    </div>
+     
+    <div class = "row container-center">
+      <img class="onboarding-illustration" alt="onboarding-illustration" src="./assets/img/onboarding_illustration.svg">
+    </div>
+    
+  </div>
+  <div class="col-xs-10 col-sm-4 align-self-center">
+    <div class="container-center">
+      <div class="content">
+        
+        <div class = "form-group flex-vertical-centered">
+          <div class="col">
+            <button [disabled]="loading" class="login-button" (click)="goToLogin()">
+                <h4>Login</h4>
+            </button>
+          </div>
+          
+          <div class="col">
+            <button [disabled]="loading" class="register-button">
+                <h4>Register</h4>
+            </button>
+          </div>
+        </div>
+        
+        <form id="register" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="form-group flex">
+            <div class="col">
+              <div class="selected-text">Username</div>
+              <input type="text" class="form-control form-control-sm" id="inputUsername"
+                formControlName="username" placeholder="" autocomplete="username"
+                [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+              <span *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <span *ngIf="f.username.errors.required">Username is required!</span>
+              </span>
+            </div>
+          </div>
+          <div class="form-group flex">
+            <div class="col">
+              <div class="selected-text">Email</div>
+              <input type="text" class="form-control form-control-sm" id="inputEmail"
+                formControlName="email" placeholder=""
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required!</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group flex">
+            <div class="col">
+              <div class="selected-text">Password</div>
+              <input type="password" class="form-control form-control-sm" id="inputPassword"
+                formControlName="password" placeholder="" autocomplete="new-password"
+                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required!</div>
+                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters!</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group flex">
+            <div class="col">
+              <div class="selected-text">Confirm password</div>
+              <input type="password" class="form-control form-control-sm" id="inputConfirmPassword"
+                formControlName="confirmPassword" placeholder="" autocomplete="new-password"
+                [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+              <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                <div *ngIf="f.confirmPassword.errors.required">Password confirmation is required!</div>
+              </div>
+            </div>
+          </div>
+          <button [disabled]="loading" class="btn-primary shadow-none">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
