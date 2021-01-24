@@ -24,3 +24,13 @@ Functionalitati:
 6. Arbore genealogic
 
 Arhitectura:
+
+
+
+
+
+
+*npm test* fix error on windows:
+
+1. Run PowerShell as Administrator
+2. Run *Set-ExecutionPolicy RemoteSigned*
