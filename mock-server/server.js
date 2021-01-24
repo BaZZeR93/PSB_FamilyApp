@@ -79,6 +79,14 @@ server.post('/user/register', (req, res) => {
   return
 })
 
+server.post('/user/recover', (req, res) => {
+  const { email } = req.body
+  // TODO: Send email here
+
+  res.status(200).json({email});
+  return;
+})
+
 server.get('/user/list', (req, res) => {
  res.status(200).json({userList});
  return;

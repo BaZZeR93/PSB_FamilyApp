@@ -19,12 +19,14 @@ import { JwtInterceptor } from 'src/app/helpers/jwt.interceptor';
 import { ErrorInterceptor } from 'src/app/helpers/error.interceptor';
 
 import { fakeBackendProvider } from './helpers/fake-backend';
+import { RecoverPasswordPageComponent } from './pages/recover-password-page/recover-password-page.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
   { path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard] },
+  { path: 'recover-password', component: RecoverPasswordPageComponent },
   { path: '**', component: NotFoundPageComponent }
 ];
 
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
     DashboardPageComponent,
     LoginPageComponent,
     NotFoundPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    RecoverPasswordPageComponent,
   ],
   imports: [
     BrowserModule,

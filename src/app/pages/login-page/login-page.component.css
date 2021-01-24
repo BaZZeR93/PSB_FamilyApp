@@ -62,7 +62,7 @@ span {font-family: raleway-black;}
 }
 
 .register-button:hover, .register-button:focus {
-    transform: scale(0.8) !important;
+    transform: scale(1.2) !important;
     border: none !important;
     outline: none !important;
     color: #999999 !important;
