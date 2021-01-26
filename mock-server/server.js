@@ -55,8 +55,15 @@ server.post('/user/authenticate', (req, res) => {
     res.status(status).json({ status, message });
     return
   }
+
+  var id;
+  for (var idx = 0; idx < userList.length; idx++) {
+    if (userList[idx].username === username )
+      id = userList[idx].id;
+  }
+
   const token = createToken({ username, password });
-  res.json({ username, token });
+  res.json({ id, username, token });
 })
 
 // Add new user to database
@@ -69,7 +76,7 @@ server.post('/user/register', (req, res) => {
       return;
     }
   }
-  userList.push({id: userList.length + 1, username, password, email });
+  userList.push({id: userList.length + 1, username, password, email, budget: 0 });
   // fs.writeFile('db.users.json', JSON.stringify(userdb), (err) => {
   //   if (err) throw err;
   //   console.log('The user has been saved!');
@@ -87,6 +94,30 @@ server.post('/user/recover', (req, res) => {
   return;
 })
 
+server.post('/user/addmoney', (req, res) => {
+  const { moneyToAdd, id } = req.body;
+
+  console.log(moneyToAdd, id);
+  let foundUser = false;
+
+  for (var idx = 0; idx < userList.length; idx++) {
+    if (userList[idx].id === id) {
+      userList[idx].budget += moneyToAdd;
+      foundUser = true;
+
+      break;
+    }
+  }
+
+  if (!foundUser) {
+    res.status(404);
+  } else {
+    res.status(200);
+  }
+  
+  return;
+});
+
 server.get('/user/list', (req, res) => {
  res.status(200).json({userList});
  return;
@@ -95,9 +126,4 @@ server.get('/user/list', (req, res) => {
 server.use(router)
 
 server.listen(8200, () => {
-  console.log('Run Auth API Server');
-  console.log();
-  console.log('  Resources');
-  console.log('  http://localhost:8200/user/authenticate');
-  console.log('  http://localhost:8200/user/register');
 })

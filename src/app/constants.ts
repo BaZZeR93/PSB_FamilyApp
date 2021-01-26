@@ -7,6 +7,8 @@ export const backendUrl = {
     authenticate: `${authApi}/user/authenticate`,
     register: `${authApi}/user/register`,
     recover: `${authApi}/user/recover`,
+    list: `${authApi}/user/list`,
+    addMoney: `${authApi}/user/addmoney`,
   },
   fxTradeService: {
     getTransactions: `${tradeApi}/transactions`,
