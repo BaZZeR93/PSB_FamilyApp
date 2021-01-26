@@ -1,30 +1,31 @@
 # PSB_FamilyApp
 
-Family App este o aplicatie web-based in care mai multe familii isi pot gestiona mai bine activitatile, bugetul si timpul liber.
+*Family App* is a web-based application through family members can manage their activities, budget and free time.
 
-Roluri in echipa:
+Roles in the team:
 * Irina Covrescu – Business analyst
 * Florin Smeu - Designer
 * Robert Rada – Front-end Developer, QA Engineer
 * Radu Nechita – Back-end Developer
 * Robert Roman - Devops Engineer
 
-Functionalitati:
+Requirements:
 
-1. Bugetul familiei: fiecare membru al familiei poate adauga cheltuielile pe categorii (de ex. Economii, suma limita de cheltuit pe o luna, clasificare cheltuieli);
+### Registration page:
+Each member of a family (parent or child) should first register using the registration form.
 
-2. Calendar: evenimente, programul copiilor, rezervare slot de timp pentru toti membri (de ex. Perioada vacantei);
+**Acceptance criteria:**
+* User need to provide username and email.
+* User need to provide a password. Password can not be smaller than 6 characters.
+* User need to choose a role in the family he wants to register in.
+* User is only able to submit after all fields are correctly filled.
 
-3. Diverse roluri: de ex. Copii, parinti; respective diverse permisiuni;
+### Login page:
+After registration is done, the user can enter his account.
 
-4. Wall: fiecare poate posta link-uri, fotografii pe profilul lor. Aceste postari vor fi accesibile doar membrilor familiei;
-
-5. Album foto: fiecare membru al familiei poate adauga fotografii
-
-6. Arbore genealogic
-
-Arhitectura:
-
+**Acceptance criteria:**
+* If the user is not registered, he can not enter his account.
+* If username or email does not correspond with the password, he can not enter his account.
 
 
 
