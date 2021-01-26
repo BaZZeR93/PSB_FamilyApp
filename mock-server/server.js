@@ -16,12 +16,12 @@ const expiresIn = '1h'
 
 var userList = [];
 
-// Create a token from a payload 
+// Create a token from a payload
 function createToken(payload) {
   return jwt.sign(payload, SECRET_KEY, { expiresIn })
 }
 
-// Verify the token 
+// Verify the token
 function verifyToken(token) {
   return jwt.verify(token, SECRET_KEY, (err, decode) => decode !== undefined ? decode : err)
 }
@@ -42,8 +42,6 @@ server.use(function (req, res, next) {
   }
   next();
 });
-
-
 
 // Login user
 server.post('/user/authenticate', (req, res) => {
@@ -81,9 +79,47 @@ server.post('/user/register', (req, res) => {
 
 server.post('/user/recover', (req, res) => {
   const { email } = req.body
-  // TODO: Send email here
+  var password = null
 
-  res.status(200).json({email});
+  for (user of userList) {
+    if (user.email == email) {
+      password = user.password;
+      break;
+    }
+  }
+
+  if (password == null) {
+    console.log("No user found for email " + email);
+    res.status(200).json({ success: false });
+    return;
+  }
+
+  var nodemailer = require('nodemailer');
+
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'family.app.psb@gmail.com',
+      pass: 'familyapp'
+    }
+  });
+
+  var mailOptions = {
+    from: 'support@familyapp.com',
+    to: email,
+    subject: 'Password recovery',
+    text: 'Your password is: ' + password
+  };
+
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+
+  res.status(200).json({ success: true });
   return;
 })
 
