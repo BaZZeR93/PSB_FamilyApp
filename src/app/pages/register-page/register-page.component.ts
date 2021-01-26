@@ -41,9 +41,9 @@ export class RegisterPageComponent implements OnInit {
     this.submitted = true;
 
     // Exit function if form is invalid
-    // if (this.registerForm.invalid) {
-    //   return;
-    // }
+    if (this.registerForm.invalid) {
+      return;
+    }
 
     this.loading = true;
     this.userService.register(this.registerForm.value)

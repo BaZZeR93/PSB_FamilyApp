@@ -46,8 +46,13 @@ export class RecoverPasswordPageComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.toastr.success('An email was sent to your address');
-          this.router.navigate(['/login']);
+          if (data["success"]) {
+            this.toastr.success('An email was sent to your address');
+            this.router.navigate(['/login']);
+          } else {
+            this.toastr.error("No user found for email " + this.f.email.value);
+            this.loading = false;
+          }
         },
         error => {
           this.toastr.error(error);
