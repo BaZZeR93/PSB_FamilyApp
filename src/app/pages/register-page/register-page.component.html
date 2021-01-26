@@ -93,6 +93,21 @@
               </div>
             </div>
           </div>
+          <div class="form-group flex">
+            <div class="col">
+              <div class="selected-text">Role</div>
+              <select required class="form-control form-control-sm" id="inputRole"
+              formControlName="role"
+              [ngClass]="{ 'is-invalid': submitted && f.role.errors }" >
+                <option value="" selected disabled hidden>Pick your role in the family</option>
+                <option value="parent">Parent</option>
+                <option value="child">Child</option>
+              </select>
+              <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+                <div *ngIf="f.role.errors.required">Picking a role is required!</div>
+              </div>
+            </div>
+          </div>
           <button [disabled]="loading" class="btn-primary shadow-none">register</button>
         </form>
       </div>
