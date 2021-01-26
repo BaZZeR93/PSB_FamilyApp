@@ -33,7 +33,6 @@ function isAuthenticated({ username, password }) {
 
 // Fix CORS
 server.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', req.headers.origin);
   res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
   res.header("Access-Control-Allow-Credentials", "true");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
