@@ -55,6 +55,8 @@
 /* Hide the images by default */
 .mySlides {
   display: none;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
 /* Add a pointer when hovering over the thumbnail images */
@@ -72,7 +74,7 @@
   padding: 16px;
   margin-top: 0px;
   margin-left: -10px;
-  color: #f2f2f2 !important;
+  color: #020202 !important;
   font-weight: bold;
   font-size: 30px;
   border-radius: 0 3px 3px 0;
@@ -94,7 +96,7 @@
 
 /* Number text (1/3 etc) */
 .numbertext {
-  color: #f2f2f2;
+  color: #020202;
   font-size: 22px;
   padding: 8px 12px;
   position: absolute;
