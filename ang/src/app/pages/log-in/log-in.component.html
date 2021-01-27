@@ -1,0 +1,88 @@
+<div class="centered-content">
+    <div class="manager_container">
+        <div class="row w-100 p-3">
+            <div class="column">
+            <div class="container-center">
+            <div class="title">Family App</div>
+            </div>
+            </div>
+        </div>
+        
+        <div class="container">
+        </div>
+        <div class="row container-center vertical-center">
+            <div class="col-xs-10 col-sm-6 ">
+            <div class = "row onboarding-container">
+                <div class="selected-text">
+                <h4>Welcome to the nicest family app</h4>
+                </div>
+            </div>
+        
+            <div class = "onboarding-container is-pulled-left regular-text">      
+                <div class = "onboarding-text">* Share photos and memories with your dear ones</div>
+                <div class = "onboarding-text">* Manage expenses at ease</div>
+                <div class = "onboarding-text">* Store photo albums</div>
+                <div class = "onboarding-text">* Schedule the tasks and events of your family</div>
+            </div>
+            
+            <div class = "row is-pulled-left">
+                <img class="onboarding-illustration" alt="onboarding-illustration" src="./assets/img/onboarding_illustration.svg">
+            </div>
+            
+            </div>
+            <div class="col-xs-10 col-sm-4">
+            <div class="container-center">
+                <div class="content">
+                
+                <div class = "flex-vertical-centered">
+                    <div class="col">
+                    <button  class="login-button" (click)="goToRegister(true)">
+                        <h3>Login</h3>
+                    </button>
+                    </div>
+                    
+                    <div class="col">
+                    <button  class="register-button" routerLink="/register">
+                        <h4>Register</h4>
+                    </button>
+                    </div>
+                </div>
+                
+                <form id="login">
+                    <!-- Username -->
+                    <div class="selected-text">Email or Username</div>
+                    <div>
+                    <!--i class="fa fa-user icon" aria-hidden="true"></i-->
+                    <div class="col">
+                        <input #email type="text"
+                        placeholder="" id="username"
+                        />
+                    </div>
+                    </div>
+        
+                    <!-- Password -->
+                    <div class="selected-text">Password</div>
+                    <div>
+                    <!--i class="fa fa-lock icon" aria-hidden="true"></i-->
+                    <div class="col">
+                        <input #pass type="password"
+                        placeholder="" id="password"
+                        />
+                    </div>
+                    </div>
+        
+                    <button class="shadow-none" (click)="logIn(email.value, pass.value)" >login</button>
+        
+                    <div class="regular-text">
+                    <span class="regular-text">Forgot your password? Recover it&nbsp;
+                    <a routerLink="['/recover-password']" class="link">here</a></span>
+                    </div>
+                </form>
+        
+        
+                </div>
+            </div>
+            </div>
+            </div>
+        </div>
+        </div>

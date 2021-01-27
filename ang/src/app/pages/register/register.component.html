@@ -1,0 +1,26 @@
+<div class="centered-content">
+    <div class="manager_container">
+        <h2 style="font-size: 30px;">Create a new account</h2>
+
+        <div class="field has-addons">
+            <div class="control">
+              <input #name class="input" type="text" placeholder="Name">
+            </div>
+            <div class="control">
+              <input #email class="input" type="email" placeholder="Email">
+            </div>
+            <div class="control">
+              <input #pass class="input" type="password" placeholder="Password">
+            </div>
+            <div class="control">
+              <input #pass2 class="input" type="password" placeholder="Repeat Password">
+            </div>
+
+          </div>
+
+          <div class="buttons">   
+            <button style="margin-right: auto;" class="button is-warning" routerLink="/">Cancel</button>
+            <button class="button is-success" (click)="CreateNewAccount(name.value,email.value,pass.value,pass2.value)">Success</button>
+          </div>
+    </div>
+</div>

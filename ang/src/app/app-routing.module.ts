@@ -1,0 +1,19 @@
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { BudgetComponent } from './pages/budget/budget.component';
+import { LogInComponent } from './pages/log-in/log-in.component';
+import { MainViewComponent } from './pages/main-view/main-view.component';
+import { RegisterComponent } from './pages/register/register.component';
+
+const routes: Routes = [
+  { path: '', component: LogInComponent},
+  { path: 'budget', component: BudgetComponent},
+  { path: 'login', component: LogInComponent},
+  { path: 'register', component: RegisterComponent}
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

@@ -1,0 +1,105 @@
+span {font-family: raleway-black;}
+
+@import '../../../main_styles.scss';
+
+.centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.manager_container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+    max-height: 680px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.container-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-logo-container {
+    background-color: rgb(255, 255, 255);
+}
+
+.onboarding-illustration {
+    width: 280x;
+    height: 280px;
+    margin: 15px;
+}
+
+.content {
+    width: 350px;
+}
+
+.icon {
+    font-size: 24px;
+    color: #dddddd;
+    margin-right: 15px;
+    line-height: 31px;
+}
+
+.col {
+    padding: 0;
+}
+
+.invalid-feedback {
+    font-weight: bold;
+}
+
+.btn-link {
+    padding: 0;
+}
+
+.onboarding-container {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    align-items: left;
+}
+
+.onboarding-text {
+    font-size: 14px !important;
+    font-family: 'Lato';
+    text-align: left;
+    color: #999999 !important;
+}
+
+.login-button {
+    background: none !important;
+    border: none !important;
+    outline: none !important;
+    color: #666666 !important;
+
+    border-radius: 30px !important;
+}
+
+.register-button:hover, .register-button:focus {
+    transform: scale(1.2) !important;
+    border: none !important;
+    outline: none !important;
+    color: #999999 !important;
+}
+
+.register-button {
+    background: none !important;
+    color: #999999 !important;
+    outline:none !important;
+    border-style: none !important;
+    border-radius: 30px !important;
+}
+
+
+.selected_text {
+    font-family: 'Lato';
+}
+.regular-text {
+    font-family: 'Lato';
+}
