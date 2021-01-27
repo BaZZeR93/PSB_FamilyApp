@@ -56,4 +56,8 @@ export class DashboardPageComponent implements OnInit {
     //   this.getUsers();
     // });
   }
+
+  tapHomeButton() {
+    this.switchTab(Content.Wall);
+  }
 }
