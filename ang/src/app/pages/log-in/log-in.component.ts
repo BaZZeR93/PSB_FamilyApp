@@ -8,7 +8,6 @@ import { UserService } from 'src/app/user.service';
   styleUrls: ['./log-in.component.css']
 })
 export class LogInComponent implements OnInit {
-
   constructor(
     private userService: UserService,
     private router: Router) { }
@@ -20,7 +19,10 @@ export class LogInComponent implements OnInit {
     event.preventDefault()
       console.log(email, pass)
       this.userService.authUser(email,pass).subscribe(
-        (response: any) => this.onSuccess(response),
+        (response: any) => {
+          this.onSuccess(response);
+          this.userService.loggedUser = response;
+        },
         (error: any) => this.onError(error)
       );
      // console.log(email,pass)

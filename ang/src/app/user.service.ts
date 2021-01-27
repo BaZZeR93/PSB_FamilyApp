@@ -5,6 +5,7 @@ import { WebRequestService } from './web-request.service';
   providedIn: 'root'
 })
 export class UserService {
+  public loggedUser: any;
 
   constructor(private webRequestService: WebRequestService) { }
 
@@ -18,5 +19,9 @@ export class UserService {
 
   recover(email:string){
     return this.webRequestService.post('recover',{email});
+  }
+
+  listUser() {
+    return this.webRequestService.get('users/list');
   }
 }
