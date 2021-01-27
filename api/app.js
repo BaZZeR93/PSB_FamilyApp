@@ -145,6 +145,71 @@ app.post('/authUser', async (req,res) =>{
     }
 })
 
+function generatePassword() {
+    var length = 10,
+        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+        retVal = "";
+    for (var i = 0, n = charset.length; i < length; ++i) {
+        retVal += charset.charAt(Math.floor(Math.random() * n));
+    }
+    return retVal;
+}
+
+app.post('/recover', async (req, res) => {
+  var email = req.body.email;
+
+  var userId = await database.ref("users/").orderByChild("email").equalTo(email).once('value').then(function(snapshot) {
+    if (snapshot.exists()) {
+      var objects = snapshot.val();
+      var keys = Object.keys(objects);
+      return objects[keys[0]].id;
+    }
+
+    return null;
+  });
+
+  if (userId == null) {
+    console.log("No user found for email " + email);
+    res.status(200).json({ success: false });
+    return;
+  }
+
+  var newPassword = generatePassword();
+  const hashedPass = await bcrypt.hash(newPassword, 10);
+
+  console.log("Changing user password to: " + newPassword);
+  console.log("Hash of new password: " + hashedPass);
+  database.ref("users/" + userId).update({ pass: hashedPass });
+
+  console.log("Sending email to " + email);
+  var nodemailer = require('nodemailer');
+
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'family.app.psb@gmail.com',
+      pass: 'familyapp'
+    }
+  });
+
+  var mailOptions = {
+    from: 'support@familyapp.com',
+    to: email,
+    subject: 'Password recovery',
+    text: 'Your new password is: ' + newPassword
+  };
+
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+
+  res.status(200).json({ success: true });
+  return;
+})
 
 
 

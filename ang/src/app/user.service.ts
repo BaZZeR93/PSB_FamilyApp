@@ -15,4 +15,8 @@ export class UserService {
   authUser(email:string, pass:string){
     return this.webRequestService.post('authUser',{email,pass});
   }
+
+  recover(email:string){
+    return this.webRequestService.post('recover',{email});
+  }
 }
