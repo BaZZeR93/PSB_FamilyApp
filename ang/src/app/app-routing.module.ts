@@ -6,10 +6,12 @@ import { MainViewComponent } from './pages/main-view/main-view.component';
 import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
-  { path: '', component: LogInComponent},
+  { path: '', component: LogInComponent, pathMatch: 'full'},
   { path: 'budget', component: BudgetComponent},
+  { path: 'dashboard/budget', component: BudgetComponent},
   { path: 'login', component: LogInComponent},
-  { path: 'register', component: RegisterComponent}
+  { path: 'register', component: RegisterComponent},
+  { path: 'dashboard', component: MainViewComponent}
 ];
 
 @NgModule({

@@ -111,22 +111,27 @@ app.post('/users', async (req,res) =>{
  */
 app.post('/authUser', async (req,res) =>{
     try {
-        console.log(req.body.email)
-        const hashedPass = await bcrypt.hash(req.body.pass, 10)
-        console.log(hashedPass)
+       // console.log(req.body.email)
+       // console.log(hashedPass)
 
         database.ref("users/").orderByChild("email").equalTo(req.body.email).once('value', function(data) {
             if(data.val() != null){
-            
-                database.ref("users/").orderByChild("pass").equalTo(hashedPass).once('value', function(data2) {
-                    if(data2.val()!= null) {
-                        res.send(data2.val())
-                    }
-                    else
-                    {
-                        res.sendStatus(400)
-                    }
-                });
+
+                var objects = data.val()
+               // console.log(objects)
+                var keys = Object.keys(objects)
+                console.log(objects)
+                var hash = objects[keys[0]].pass
+                console.log(objects[keys[0]].name)
+                if(bcrypt.compareSync(req.body.pass, hash))
+                {
+                    console.log("logged in")
+                    res.send({name: objects[keys[0]].name})
+                }
+                else
+                {
+                    res.sendStatus(400)
+                }
             }
             else
             {

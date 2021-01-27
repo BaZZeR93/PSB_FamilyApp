@@ -71,8 +71,7 @@
                     </div>
                     </div>
         
-                    <button class="shadow-none" (click)="logIn(email.value, pass.value)" >login</button>
-        
+                    <button class="shadow-none" (click)="logIn(email.value, pass.value, $event)" >login</button>
                     <div class="regular-text">
                     <span class="regular-text">Forgot your password? Recover it&nbsp;
                     <a routerLink="['/recover-password']" class="link">here</a></span>
