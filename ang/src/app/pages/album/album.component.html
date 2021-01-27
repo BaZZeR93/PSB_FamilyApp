@@ -1,0 +1,27 @@
+<!-- The grid: four columns -->
+<div class="row">
+  <div class="column">
+    <img src="./assets/img/img_nature.jpg" id="Nature" (click)="myFunction('Nature');">
+  </div>
+  <div class="column">
+    <img src="./assets/img/img_snow.jpg" id="Snow" (click)="myFunction('Snow');">
+  </div>
+  <div class="column">
+    <img src="./assets/img/img_mountains.jpg" id="Mountains" (click)="myFunction('Mountains');">
+  </div>
+  <div class="column">
+    <img src="./assets/img/img_lights.jpg" id="Lights" (click)="myFunction('Lights');">
+  </div>
+</div>
+
+<!-- The expanding image container -->
+<div class="container">
+  <!-- Close the image -->
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+
+  <!-- Expanded image -->
+  <img id="expandedImg" style="width:100%">
+
+  <!-- Image text -->
+  <div id="imgtext"></div>
+</div>
