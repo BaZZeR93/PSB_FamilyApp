@@ -86,6 +86,33 @@ app.post('/expenses', (req,res) =>{
 })
 
 /**
+ * GET /users/list
+ * Scope: retrive users
+ */
+app.get('/users/list', (req,res) =>{
+    try {
+        database.ref("users/").once('value', function(data) {
+            //console.log(data.val())
+            if(data.val() != null) {
+                var userList = data.val()
+                //console.log(userList);
+                var keys = Object.keys(userList)
+                //console.log(keys);
+                
+                var exp = new Array(keys.length)
+                for(var i = 0; i < keys.length; i++) {
+                    exp[i] = userList[keys[i]]
+                }
+            }
+            res.send(exp)
+        });
+        //res.sendStatus(200)
+    } catch {
+        res.sendStatus(400)
+    }
+})
+
+/**
  * POST /users
  * Scope: create a new user and return the new list to the user
  */
@@ -126,19 +153,25 @@ app.post('/authUser', async (req,res) =>{
                 if(bcrypt.compareSync(req.body.pass, hash))
                 {
                     console.log("logged in")
-                    res.send({name: objects[keys[0]].name})
+                    res.send({
+                        name: objects[keys[0]].name,
+                        id: objects[keys[0]].id
+                    });
                 }
                 else
                 {
+                    console.log('bcrypt.compareSync null');
                     res.sendStatus(400)
                 }
             }
             else
             {
+                console.log('data.val() null');
                 res.sendStatus(400)
             }
         });
     } catch(err) {
+        console.log(err);
         res.sendStatus(400)
         console.log("log in failed")
         //console.log(err)

@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainViewComponent } from './pages/main-view/main-view.component';
 import { HttpClientModule} from '@angular/common/http';
 import { BudgetComponent } from './pages/budget/budget.component';
 import { LogInComponent } from './pages/log-in/log-in.component';
@@ -14,11 +13,12 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainViewComponent,
+    DashboardPageComponent,
     BudgetComponent,
     LogInComponent,
     RegisterComponent,

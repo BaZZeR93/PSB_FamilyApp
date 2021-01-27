@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BudgetComponent } from './pages/budget/budget.component';
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { LogInComponent } from './pages/log-in/log-in.component';
-import { MainViewComponent } from './pages/main-view/main-view.component';
 import { RecoverPasswordComponent } from './pages/recover-password/recover-password.component';
 import { RegisterComponent } from './pages/register/register.component';
 
@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'dashboard/budget', component: BudgetComponent},
   { path: 'login', component: LogInComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'dashboard', component: MainViewComponent},
+  { path: 'dashboard', component: DashboardPageComponent},
   { path: 'recover-password', component: RecoverPasswordComponent},
 ];
 

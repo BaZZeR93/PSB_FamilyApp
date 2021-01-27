@@ -4,7 +4,7 @@ import { ExpenseService } from 'src/app/expense.service';
 @Component({
   selector: 'app-budget',
   templateUrl: './budget.component.html',
-  styleUrls: ['./budget.component.scss']
+  styleUrls: ['./budget.component.css']
 })
 export class BudgetComponent implements OnInit {
 

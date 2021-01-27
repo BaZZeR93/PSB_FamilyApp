@@ -4,7 +4,8 @@ function createUser(id, name, email, pass)
                 "id": id,
                 "name": name,
                 "email": email,
-                "pass": pass
+                "pass": pass,
+                "budget": budget
             }
 }
 
