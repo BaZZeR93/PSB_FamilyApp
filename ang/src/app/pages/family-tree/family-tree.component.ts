@@ -5,11 +5,11 @@ import { Content } from 'src/app/models/contentEnum';
 import { UserService } from 'src/app/user.service';
 
 @Component({
-  selector: 'app-dashboard-page',
-  templateUrl: './dashboard-page.component.html',
-  styleUrls: ['./dashboard-page.component.css']
+  selector: 'app-family-tree',
+  templateUrl: './family-tree.component.html',
+  styleUrls: ['./family-tree.component.css']
 })
-export class DashboardPageComponent implements OnInit {
+export class FamilyTreeComponent implements OnInit {
   user: any;
   users: User[];
   
@@ -29,11 +29,12 @@ export class DashboardPageComponent implements OnInit {
   switchTab(tab: Content) {
     this.selectedContent = tab;
 
-    if (tab === Content.Budget) {
-      this.getUsers();
-    }
+    
     if (tab === Content.FamilyTree) {
       this.router.navigate(['/dashboard/familytree']);
+    }
+    else{
+      this.router.navigate(['/dashboard']);
     }
     
   }
@@ -55,9 +56,5 @@ export class DashboardPageComponent implements OnInit {
         break;
       }
     }
-
-    // this.userService.addMoney(this.user, this.moneyToAdd).subscribe(() => {
-    //   this.getUsers();
-    // });
   }
 }
