@@ -11,8 +11,11 @@ export class AlbumComponent implements OnInit {
   constructor(private userService : UserService, private router: Router) { }
 
   expandImg: HTMLImageElement;
+  slideIndex: number;
 
   ngOnInit(): void {
+    this.slideIndex = 1;
+    this.showSlides(this.slideIndex);
   }
 
   myFunction(img: string) {
@@ -25,8 +28,39 @@ export class AlbumComponent implements OnInit {
     (<HTMLImageElement>document.getElementById("expandedImg")).src = (<HTMLImageElement>document.getElementById(img)).src;
     // Use the value of the alt attribute of the clickable image as text inside the expanded image
     // imgText.innerHTML = imgs.alt;
-    (<HTMLElement>document.getElementById("expandedImg")).innerHTML = (<HTMLImageElement>document.getElementById(img)).alt;
+    (<HTMLElement>document.getElementById("expandedImg")).innerHTML = (<HTMLImageElement>document.getElementById(img)).id;
     // Show the container element (hidden with CSS)
     expandImg.parentElement.style.display = "block";
   }
+
+  // Next/previous controls
+  plusSlides(n: number) {
+    this.showSlides(this.slideIndex += n);
+  }
+
+  // Thumbnail image controls
+  currentSlide(n: number) {
+    this.showSlides(this.slideIndex = n);
+  }
+
+  showSlides(n: number) {
+    var i;
+    // var slides = document.getElementsByClassName("mySlides");
+    // var dots = document.getElementsByClassName("demo");
+    var slides = Array.from(document.getElementsByClassName('mySlides') as HTMLCollectionOf<HTMLElement>)
+    var dots = Array.from(document.getElementsByClassName('demo') as HTMLCollectionOf<HTMLElement>)
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) {this.slideIndex = 1}
+    if (n < 1) {this.slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[this.slideIndex-1].style.display = "block";
+    dots[this.slideIndex-1].className += " active";
+    captionText.innerHTML = dots[this.slideIndex-1].id;
+  }
+
 }

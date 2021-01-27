@@ -1,27 +1,65 @@
-<!-- The grid: four columns -->
-<div class="row">
-  <div class="column">
-    <img src="./assets/img/img_nature.jpg" id="Nature" (click)="myFunction('Nature');">
-  </div>
-  <div class="column">
-    <img src="./assets/img/img_snow.jpg" id="Snow" (click)="myFunction('Snow');">
-  </div>
-  <div class="column">
-    <img src="./assets/img/img_mountains.jpg" id="Mountains" (click)="myFunction('Mountains');">
-  </div>
-  <div class="column">
-    <img src="./assets/img/img_lights.jpg" id="Lights" (click)="myFunction('Lights');">
-  </div>
-</div>
-
-<!-- The expanding image container -->
+<!-- Container for the image gallery -->
 <div class="container">
-  <!-- Close the image -->
-  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
 
-  <!-- Expanded image -->
-  <img id="expandedImg" style="width:100%">
+  <!-- Full-width images with number text -->
+  <div class="mySlides">
+    <div class="numbertext">1 / 6</div>
+    <img src="./assets/img/img_woods_wide.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">2 / 6</div>
+    <img src="./assets/img/img_5terre_wide.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">3 / 6</div>
+    <img src="./assets/img/img_mountains_wide.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">4 / 6</div>
+    <img src="./assets/img/img_lights_wide.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">5 / 6</div>
+    <img src="./assets/img/img_nature_wide.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">6 / 6</div>
+    <img src="./assets/img/img_snow_wide.jpg" style="width:100%">
+  </div>
+
+  <!-- Next and previous buttons -->
+  <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+  <a class="next" (click)="plusSlides(1)">&#10095;</a>
 
   <!-- Image text -->
-  <div id="imgtext"></div>
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <!-- Thumbnail images -->
+  <div class="row">
+    <div class="column2">
+      <img class="demo cursor" src="./assets/img/img_woods.jpg" style="width:100%" (click)="currentSlide(1)" id="The Woods">
+    </div>
+    <div class="column2">
+      <img class="demo cursor" src="./assets/img/img_5terre.jpg" style="width:100%" (click)="currentSlide(2)" id="Cinque Terre">
+    </div>
+    <div class="column2">
+      <img class="demo cursor" src="./assets/img/img_mountains.jpg" style="width:100%" (click)="currentSlide(3)" id="Mountains and fjords">
+    </div>
+    <div class="column2">
+      <img class="demo cursor" src="./assets/img/img_lights.jpg" style="width:100%" (click)="currentSlide(4)" id="Northern Lights">
+    </div>
+    <div class="column2">
+      <img class="demo cursor" src="./assets/img/img_nature.jpg" style="width:100%" (click)="currentSlide(5)" id="Nature and sunrise">
+    </div>
+    <div class="column2">
+      <img class="demo cursor" src="./assets/img/img_snow.jpg" style="width:100%" (click)="currentSlide(6)" id="Snowy Mountains">
+    </div>
+  </div>
 </div>
