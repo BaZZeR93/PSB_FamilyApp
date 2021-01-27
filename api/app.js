@@ -84,7 +84,7 @@ app.post('/api/expenses', (req,res) =>{
         res.sendStatus(200)
     } catch(err) {
         res.sendStatus(400)
-        console.log("Write to DB error")
+
         //console.log(err)
     }
 
@@ -114,7 +114,7 @@ app.post('/api/users/add-money', async (req, res) =>{
 
         
         
-          res.status(200).send({ status: 'OK'});;
+          res.status(200).send({ status: 'OK'});
     } catch(err) {
         res.sendStatus(400);
         console.log(err);
@@ -158,14 +158,14 @@ app.post('/api/users', async (req,res) =>{
         console.log(req.body.name)
         const hashedPass = await bcrypt.hash(req.body.pass, 10)
         id = Date.now().toString()
-        exp = users(id, req.body.name, req.body.email, hashedPass)
-        database.ref("/users/"+id).update(exp)
+        exp = users(id, req.body.name, req.body.email, hashedPass, 0)
+        database.ref("users/"+id).update(exp)
         
-        res.sendStatus(200)
+        res.status(200).send({ status: 'OK'});
     } catch(err) {
         res.sendStatus(400)
-        console.log("Write to DB error")
-        //console.log(err)
+  
+        console.log(err)
     }
 })
 
@@ -189,7 +189,7 @@ app.post('/api/authUser', async (req,res) =>{
                 console.log(objects[keys[0]].name)
                 if(bcrypt.compareSync(req.body.pass, hash))
                 {
-                    console.log("logged in")
+
                     res.send({
                         name: objects[keys[0]].name,
                         id: objects[keys[0]].id
@@ -197,21 +197,19 @@ app.post('/api/authUser', async (req,res) =>{
                 }
                 else
                 {
-                    console.log('bcrypt.compareSync null');
+
                     res.sendStatus(400)
                 }
             }
             else
             {
-                console.log('data.val() null');
+        
                 res.sendStatus(400)
             }
         });
     } catch(err) {
         console.log(err);
         res.sendStatus(400)
-        console.log("log in failed")
-        //console.log(err)
     }
 })
 
