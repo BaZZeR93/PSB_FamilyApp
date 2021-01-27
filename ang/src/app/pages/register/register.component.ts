@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/user.service';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
 
@@ -23,5 +22,10 @@ export class RegisterComponent implements OnInit {
     else{
       console.log("err")
     }
+  }
+
+  goToLogin() {
+    console.log("navigated to login")
+    this.router.navigate(["login"]);
   }
 }

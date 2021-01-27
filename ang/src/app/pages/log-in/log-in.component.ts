@@ -5,7 +5,7 @@ import { UserService } from 'src/app/user.service';
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
-  styleUrls: ['./log-in.component.scss']
+  styleUrls: ['./log-in.component.css']
 })
 export class LogInComponent implements OnInit {
 
@@ -35,7 +35,13 @@ export class LogInComponent implements OnInit {
     this.router.navigate(["login"])
   }
 
-  goToRegister(par: boolean){
+  goToRegister() {
     console.log("navigated to register")
+    this.router.navigate(["register"]);
+  }
+
+  goToRecoverPassword() {
+    console.log("navigated to recover password")
+    this.router.navigate(["recover-password"]);
   }
 }

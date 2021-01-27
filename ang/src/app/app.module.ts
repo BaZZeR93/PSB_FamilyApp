@@ -8,6 +8,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { BudgetComponent } from './pages/budget/budget.component';
 import { LogInComponent } from './pages/log-in/log-in.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { RecoverPasswordComponent } from './pages/recover-password/recover-password.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { RegisterComponent } from './pages/register/register.component';
     MainViewComponent,
     BudgetComponent,
     LogInComponent,
-    RegisterComponent
+    RegisterComponent,
+    RecoverPasswordComponent,
   ],
   imports: [
     BrowserModule,
