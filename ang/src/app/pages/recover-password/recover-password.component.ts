@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/user.service';
+import { ToastrService } from 'ngx-toastr';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-recover-password',
@@ -11,24 +13,36 @@ export class RecoverPasswordComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastrService
+    ) { }
 
   ngOnInit(): void {
   }
 
   recoverPassword(email: string, event: Event) {
     event.preventDefault()
-      console.log(email)
+    console.log("email=" + email)
 
-      // TODO Write this method as the one  in the log-in.component.ts and create an api method where it should send its request
-    //   this.userService.authUser(email).subscribe(
-    //     (response: any) => this.onSuccess(response),
-    //     (error: any) => this.onError(error)
-    //   );
-     // console.log(email,pass)\
+    this.userService.recover(email)
+      .subscribe(
+      data => {
+        if (data["success"]) {
+          this.toastr.success('An email was sent to your address');
+          this.onSuccess("success");
+        } else {
+          this.toastr.error("No user found for email " + email);
+          this.onError("No user found for email " + email);
+        }
+      },
+      error => {
+        this.toastr.error(error);
+        this.onError("recover service error");
+      });
 
-     this.onSuccess("success")
+     this.onSuccess("success");
   }
+
   onSuccess(response: string) {
     console.log(response)
     this.router.navigate(["login"]);
