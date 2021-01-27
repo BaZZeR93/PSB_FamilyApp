@@ -12,23 +12,28 @@ Roles in the team:
 
 # Requirements:
 
-## * Registration page:
+* ##  Registration page:
 Each member of a family (parent or child) should first register using the registration form.
 
 ### Acceptance criteria:
 
-User need to provide username and email.
-User need to provide a password. Password can not be smaller than 6 characters.
-User need to choose a role in the family he wants to register in.
-User is only able to submit after all fields are correctly filled.
+* User need to provide username, email and a password.
+* User is only able to submit after all fields are correctly filled.
 
-## * Login page:
-After registration is done, the user can enter his account.
+*  ## Login page:
+After registration is done, the user can enter his account using his email and password.
 
 ### Acceptance criteria:
 
-If the user is not registered, he can not enter his account.
-If username or email does not correspond with the password, he can not enter his account.
+* If the user is not registered, he can not enter his account.
+* If username or email does not correspond with the password, he can not enter his account.
+
+*  ## Recover password page:
+If the user forgot the password, he can choose to reset it.
+
+### Acceptance criteria:
+
+* If the user is not registered, he will not receive an email with the new password.
 
 npm test fix error on windows:
 
