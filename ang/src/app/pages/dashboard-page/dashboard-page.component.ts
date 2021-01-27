@@ -12,6 +12,7 @@ import { UserService } from 'src/app/user.service';
 export class DashboardPageComponent implements OnInit {
   user: any;
   users: User[];
+  
   public ContentEnum = Content;
   public selectedContent: Content = Content.Wall;
   public moneyToAdd: number = 0;
