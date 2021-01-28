@@ -1,16 +1,18 @@
 .login-button {
-  background: none !important;
-  border: none !important;
-  outline: none !important;
-  color: #666666 !important;
+    background: none !important;
+    border: none !important;
+    outline: none !important;
+    color: #666666 !important;
 
-  border-radius: 30px !important;
+    border-radius: 30px !important;
 }
+
 
 .custom-scrollbar-js,
 .custom-scrollbar-css {
   height: 200px;
 }
+
 
 /* Custom Scrollbar using CSS */
 .custom-scrollbar-css {
@@ -34,16 +36,10 @@
   background-image: linear-gradient(to top, #00d2ff 0%, #3a7bd5 100%);
 }
 
-.table-responsive {
+.table-responsive{
   max-height: 75vh;
   max-width: 100%;
   overflow-y: auto;
-}
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
 
 }
 

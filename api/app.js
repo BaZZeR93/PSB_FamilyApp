@@ -50,7 +50,7 @@ app.get('/budget', (req,res) =>{
  * GET /expenses
  * Scope: retrive an array of expenses
  */
-app.get('/api/expenses', (req,res) =>{
+app.get('/expenses', (req,res) =>{
     try {
         database.ref("expenses/").once('value', function(data) {
             //console.log(data.val())
@@ -74,7 +74,7 @@ app.get('/api/expenses', (req,res) =>{
  * POST /expenses
  * Scope: create a new expens and return the new list to the user
  */
-app.post('/api/expenses', (req,res) =>{
+app.post('/expenses', (req,res) =>{
     try {
         console.log(req.body.name)
         id = Date.now().toString()
@@ -90,7 +90,7 @@ app.post('/api/expenses', (req,res) =>{
 
 })
 
-app.post('/api/users/add-money', async (req, res) =>{
+app.post('/users/add-money', async (req, res) =>{
     try {
         var {userId, moneyToAdd} = req.body;
 
@@ -126,7 +126,7 @@ app.post('/api/users/add-money', async (req, res) =>{
  * GET /users/list
  * Scope: retrive users
  */
-app.get('/api/users/list', (req,res) =>{
+app.get('/users/list', (req,res) =>{
     try {
         database.ref("users/").once('value', function(data) {
             //console.log(data.val())
@@ -153,7 +153,7 @@ app.get('/api/users/list', (req,res) =>{
  * POST /users
  * Scope: create a new user and return the new list to the user
  */
-app.post('/api/users', async (req,res) =>{
+app.post('/users', async (req,res) =>{
     try {
         console.log(req.body.name)
         const hashedPass = await bcrypt.hash(req.body.pass, 10)
@@ -173,7 +173,7 @@ app.post('/api/users', async (req,res) =>{
  * POST /authUser
  * Scope: auth user and return the status
  */
-app.post('/api/authUser', async (req,res) =>{
+app.post('/authUser', async (req,res) =>{
     try {
        // console.log(req.body.email)
        // console.log(hashedPass)
@@ -223,7 +223,7 @@ function generatePassword() {
     return retVal;
 }
 
-app.post('/api/recover', async (req, res) => {
+app.post('/recover', async (req, res) => {
   var email = req.body.email;
 
   var userId = await database.ref("users/").orderByChild("email").equalTo(email).once('value').then(function(snapshot) {

@@ -1,4 +1,4 @@
-export var authAPI = 'http://localhost:3000/api'
+export var authAPI = 'http://localhost:3000'
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
