@@ -1,4 +1,4 @@
-function createUser(id, name, email, pass)
+function createUser(id, name, email, pass, budget)
 {
     return {
                 "id": id,

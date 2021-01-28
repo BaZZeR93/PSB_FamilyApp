@@ -5,8 +5,6 @@ import { WebRequestService } from './web-request.service';
   providedIn: 'root'
 })
 export class UserService {
-  public loggedUser: any;
-
   constructor(private webRequestService: WebRequestService) { }
 
   createUser(name:string, email: string, pass: string){
@@ -23,5 +21,14 @@ export class UserService {
 
   listUser() {
     return this.webRequestService.get('users/list');
+  }
+
+  addMoney(userId: string, moneyToAdd: number) {
+    let body = {
+      userId: userId,
+      moneyToAdd: moneyToAdd
+    };
+
+    return this.webRequestService.post('users/add-money', body);
   }
 }

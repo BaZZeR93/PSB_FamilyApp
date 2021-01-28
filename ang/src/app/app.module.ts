@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
     AppRoutingModule,
     HttpClientModule,
     CommonModule,
+    FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
   ],

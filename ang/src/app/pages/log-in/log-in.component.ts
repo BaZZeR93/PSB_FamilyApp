@@ -21,7 +21,7 @@ export class LogInComponent implements OnInit {
       this.userService.authUser(email,pass).subscribe(
         (response: any) => {
           this.onSuccess(response);
-          this.userService.loggedUser = response;
+          localStorage.setItem('user', JSON.stringify(response));
         },
         (error: any) => this.onError(error)
       );

@@ -9,16 +9,13 @@
         </div>
       </header> -->
       <!-- <img src="./assets/img/homeicon.png" style="width: 80px;"> -->
-      <button type="button" class="btn btn-secondary mt-2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16" >
-          <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"></path>
-          <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"></path>
-        </svg>
+      <button type="button" class="home-button"  (click)="tapHomeButton()">
+        <img src="./assets/img/home-button.svg" style="width: 30px;">
       </button>
     </div>
 
   <div class="col-md-4">
-      <div class="title">FamilyApp</div>
+      <div class="app-title">FamilyApp</div>
   </div>  
   <div class="col-md-2"></div>
 
@@ -41,44 +38,40 @@
         </div>
       </div>
     </div>
-</div>  
+</div>
 </div>
 
-<div class="row">
-  <div class="col-md-2">
-    <div class="row w-100 p-3">
-      <button class="btn-wall shadow-none" (click)="switchTab(ContentEnum.Wall)">
+<div class="row full-row">
+  <div class="col-md-2 h-100">
+    <div class="row menu-row">
+      <button class="btn-menu shadow-none" (click)="switchTab(ContentEnum.Wall)">
         <h4>wall</h4>
       </button>
     </div>
-    <div class="row w-100 p-3">
-      <button class="btn-wall shadow-none" (click)="switchTab(ContentEnum.Budget)">
+    <div class="row menu-row">
+      <button class="btn-menu shadow-none" (click)="switchTab(ContentEnum.Budget)">
         <h4>budget</h4>
       </button>
     </div>
-    <div class="row w-100 p-3">
-      <button class="btn-wall shadow-none" (click)="switchTab(ContentEnum.Calendar)">
+    <div class="row menu-row">
+      <button class="btn-menu shadow-none" (click)="switchTab(ContentEnum.Calendar)">
         <h4>calendar</h4>
       </button>
     </div>
-    <div class="row w-100 p-3">
-      <button class="btn-wall shadow-none" (click)="switchTab(ContentEnum.ToAlbum)">
+    <div class="row menu-row">
+      <button class="btn-menu shadow-none" (click)="switchTab(ContentEnum.ToAlbum)">
         <h4>to album</h4>
       </button>
     </div>
-    <div class="row w-100 p-3">
-      <button class="btn-wall shadow-none" (click)="switchTab(ContentEnum.Roles)">
-        <h4>roles</h4>
-      </button>
-    </div>
-    <div class="row w-100 p-3">
-      <button class="btn-wall shadow-none" (click)="switchTab(ContentEnum.FamilyTree)">
+    <div class="row menu-row">
+      <button class="btn-menu shadow-none" (click)="switchTab(ContentEnum.FamilyTree)">
         <h4>family tree</h4>
       </button>
     </div>
   </div>
 
-  <div class="col-md-9">
+  <div class="col-md-8">
+    <div *ngIf="selectedContent === ContentEnum.Wall" class="card mr-5 mt-3 table-responsive">
       <div class="card-body p-5 ">
         <h4 class="mb-4">Welcome to your FamilyApp</h4>
         <div id="content-5" class=" p-2 ">
@@ -89,17 +82,13 @@
     </div>
 
     <div *ngIf="selectedContent === ContentEnum.Budget" class="card mr-5 mt-3 table-responsive">
-      <div class="row w-100 p-3">
-
-        <div class="col-md-1">
-          <button [disabled]="loading" class="btn-primary shadow-none" (click)="addMoney()">Add Money</button>
-        </div>
-        <div class="col-md-1">
-          <input type="number" class="form-control" [(ngModel)]="moneyToAdd"/>
-        </div>
+      <div class="row w-100 p-3 form-inline">
+            <button [disabled]="loading" class="btn-primary shadow-none mr-5" (click)="addMoney()">Add Money</button>
+            <input type="number" class="form-control mb-2" [(ngModel)]="moneyToAdd"/>
       </div>
 
-      <li *ngFor="let user of users; index as i">{{user.username}}  {{user.budget}} </li>
+
+      <li *ngFor="let user of users; index as i">{{user.name}}  {{user.budget}} </li>
     </div>
 
     <div *ngIf="selectedContent === ContentEnum.Calendar" class="card mr-5 mt-3 table-responsive">
@@ -107,11 +96,70 @@
     </div>
 
     <div *ngIf="selectedContent === ContentEnum.ToAlbum" class="card mr-5 mt-3 table-responsive">
-      ToAlbum
-    </div>
+      <!-- Container for the image gallery -->
+      <div class="container">
+        <!-- Full-width images with number text -->
+        <div class="mySlides" style="display: block;">
+          <div class="numbertext">1 / 6</div>
+          <img src="./assets/img/holiday1.jpg" style="height:350px;">
+        </div>
 
-    <div *ngIf="selectedContent === ContentEnum.Roles" class="card mr-5 mt-3 table-responsive">
-      Roles
+        <div class="mySlides">
+          <div class="numbertext">2 / 6</div>
+          <img src="./assets/img/holiday2.jpg" style="height:350px;">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">3 / 6</div>
+          <img src="./assets/img/holiday3.jpg" style="height:350px;">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">4 / 6</div>
+          <img src="./assets/img/holiday4.jpg" style="height:350px;">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">5 / 6</div>
+          <img src="./assets/img/holiday5.jpg" style="height:350px;">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">6 / 6</div>
+          <img src="./assets/img/holiday6.jpg" style="height:350px;">
+        </div>
+
+        <!-- Next and previous buttons -->
+        <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+        <a class="next" (click)="plusSlides(1)">&#10095;</a>
+
+        <!-- Image text -->
+        <div class="caption-container">
+          <p id="caption">July 2018</p>
+        </div>
+
+        <!-- Thumbnail images -->
+        <div class="row">
+          <div class="column2">
+            <img class="demo cursor active" src="./assets/img/holiday1.jpg" style="width:100%" (click)="currentSlide(1)" id="July 2018">
+          </div>
+          <div class="column2">
+            <img class="demo cursor" src="./assets/img/holiday2.jpg" style="width:100%" (click)="currentSlide(2)" id="August 2017">
+          </div>
+          <div class="column2">
+            <img class="demo cursor" src="./assets/img/holiday3.jpg" style="width:100%" (click)="currentSlide(3)" id="June 2019">
+          </div>
+          <div class="column2">
+            <img class="demo cursor" src="./assets/img/holiday4.jpg" style="width:100%" (click)="currentSlide(4)" id="May 2016">
+          </div>
+          <div class="column2">
+            <img class="demo cursor" src="./assets/img/holiday5.jpg" style="width:100%" (click)="currentSlide(5)" id="August 2018">
+          </div>
+          <div class="column2">
+            <img class="demo cursor" src="./assets/img/holiday6.jpg" style="width:100%" (click)="currentSlide(6)" id="April 2019">
+          </div>
+        </div>
+      </div>
     </div>
 
     <div *ngIf="selectedContent === ContentEnum.FamilyTree" class="card mr-5 mt-3 table-responsive">
