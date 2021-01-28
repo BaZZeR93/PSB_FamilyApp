@@ -25,8 +25,8 @@ export class DashboardPageComponent implements OnInit {
   {}
 
   ngOnInit() {
-    this.user = this.userService.loggedUser;
     this.slideIndex = 1;
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
 
   switchTab(tab: Content) {
@@ -46,17 +46,18 @@ export class DashboardPageComponent implements OnInit {
 
   getUsers() {
     this.userService.listUser().subscribe((data: any) => {
-        this.users = data.userList;
+        this.users = data;
     });
   }
 
   addMoney() {
-    for (var idx = 0; idx < this.users.length; idx++) {
-      if (this.users[idx].id === this.user.id) {
-        this.users[idx].budget += this.moneyToAdd;
-        break;
-      }
-    }
+    this.userService.addMoney(this.user.id, this.moneyToAdd).subscribe(() => {
+      this.user.budget += this.moneyToAdd;
+    });
+  }
+
+  tapHomeButton() {
+    this.switchTab(Content.Wall);
   }
 
   // Next/previous controls
@@ -88,8 +89,4 @@ export class DashboardPageComponent implements OnInit {
     dots[this.slideIndex-1].className += " active";
     captionText.innerHTML = dots[this.slideIndex-1].id;
   }
-
-    // this.userService.addMoney(this.user, this.moneyToAdd).subscribe(() => {
-    //   this.getUsers();
-    // });
 }

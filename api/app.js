@@ -18,9 +18,14 @@ app.use(bodyParser.json())
 //headers
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With");
+    
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS ');
+
     next();
   });
+
 
 // ROUTES HANDLER
 
@@ -45,7 +50,7 @@ app.get('/budget', (req,res) =>{
  * GET /expenses
  * Scope: retrive an array of expenses
  */
-app.get('/expenses', (req,res) =>{
+app.get('/api/expenses', (req,res) =>{
     try {
         database.ref("expenses/").once('value', function(data) {
             //console.log(data.val())
@@ -69,7 +74,7 @@ app.get('/expenses', (req,res) =>{
  * POST /expenses
  * Scope: create a new expens and return the new list to the user
  */
-app.post('/expenses', (req,res) =>{
+app.post('/api/expenses', (req,res) =>{
     try {
         console.log(req.body.name)
         id = Date.now().toString()
@@ -79,8 +84,40 @@ app.post('/expenses', (req,res) =>{
         res.sendStatus(200)
     } catch(err) {
         res.sendStatus(400)
-        console.log("Write to DB error")
+
         //console.log(err)
+    }
+
+})
+
+app.post('/api/users/add-money', async (req, res) =>{
+    try {
+        var {userId, moneyToAdd} = req.body;
+
+        await database.ref("users/").orderByChild("id").equalTo(userId).once('value').then(function(snapshot) {
+            if (snapshot.exists()) {
+              var objects = snapshot.val();
+              var keys = Object.keys(objects);
+              
+              var currentBudget = objects[keys[0]].budget;
+              var newBudget = currentBudget + moneyToAdd;
+           
+
+
+              firebase.database().ref("users").child(userId).update({
+                "budget": newBudget
+              })
+
+            }
+            
+          });
+
+        
+        
+          res.status(200).send({ status: 'OK'});
+    } catch(err) {
+        res.sendStatus(400);
+        console.log(err);
     }
 
 })
@@ -89,7 +126,7 @@ app.post('/expenses', (req,res) =>{
  * GET /users/list
  * Scope: retrive users
  */
-app.get('/users/list', (req,res) =>{
+app.get('/api/users/list', (req,res) =>{
     try {
         database.ref("users/").once('value', function(data) {
             //console.log(data.val())
@@ -116,19 +153,19 @@ app.get('/users/list', (req,res) =>{
  * POST /users
  * Scope: create a new user and return the new list to the user
  */
-app.post('/users', async (req,res) =>{
+app.post('/api/users', async (req,res) =>{
     try {
         console.log(req.body.name)
         const hashedPass = await bcrypt.hash(req.body.pass, 10)
         id = Date.now().toString()
-        exp = users(id, req.body.name, req.body.email, hashedPass)
-        database.ref("/users/"+id).update(exp)
+        exp = users(id, req.body.name, req.body.email, hashedPass, 0)
+        database.ref("users/"+id).update(exp)
         
-        res.sendStatus(200)
+        res.status(200).send({ status: 'OK'});
     } catch(err) {
         res.sendStatus(400)
-        console.log("Write to DB error")
-        //console.log(err)
+  
+        console.log(err)
     }
 })
 
@@ -136,7 +173,7 @@ app.post('/users', async (req,res) =>{
  * POST /authUser
  * Scope: auth user and return the status
  */
-app.post('/authUser', async (req,res) =>{
+app.post('/api/authUser', async (req,res) =>{
     try {
        // console.log(req.body.email)
        // console.log(hashedPass)
@@ -152,7 +189,7 @@ app.post('/authUser', async (req,res) =>{
                 console.log(objects[keys[0]].name)
                 if(bcrypt.compareSync(req.body.pass, hash))
                 {
-                    console.log("logged in")
+
                     res.send({
                         name: objects[keys[0]].name,
                         id: objects[keys[0]].id
@@ -160,21 +197,19 @@ app.post('/authUser', async (req,res) =>{
                 }
                 else
                 {
-                    console.log('bcrypt.compareSync null');
+
                     res.sendStatus(400)
                 }
             }
             else
             {
-                console.log('data.val() null');
+        
                 res.sendStatus(400)
             }
         });
     } catch(err) {
         console.log(err);
         res.sendStatus(400)
-        console.log("log in failed")
-        //console.log(err)
     }
 })
 
@@ -188,7 +223,7 @@ function generatePassword() {
     return retVal;
 }
 
-app.post('/recover', async (req, res) => {
+app.post('/api/recover', async (req, res) => {
   var email = req.body.email;
 
   var userId = await database.ref("users/").orderByChild("email").equalTo(email).once('value').then(function(snapshot) {

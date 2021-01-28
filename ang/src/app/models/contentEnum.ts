@@ -3,6 +3,5 @@ export enum Content {
     Budget = 2,
     Calendar = 3,
     ToAlbum = 4,
-    Roles = 5,
-    FamilyTree = 6
+    FamilyTree = 5
 }

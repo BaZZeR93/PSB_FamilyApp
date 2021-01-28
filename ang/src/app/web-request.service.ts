@@ -1,3 +1,5 @@
+export var authAPI = 'http://localhost:3000/api'
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 @Injectable({
@@ -8,7 +10,7 @@ export class WebRequestService {
   readonly ROOT_URL;
 
   constructor(private http: HttpClient) { 
-    this.ROOT_URL = 'http://localhost:3000';
+    this.ROOT_URL = authAPI;
   }
 
   get(uri:string) {

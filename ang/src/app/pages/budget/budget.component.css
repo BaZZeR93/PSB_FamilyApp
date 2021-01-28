@@ -39,6 +39,5 @@
 .table-responsive{
   max-height: 75vh;
   max-width: 100%;
-  overflow-y: auto; 
-  
+  overflow-y: auto;   
 }
