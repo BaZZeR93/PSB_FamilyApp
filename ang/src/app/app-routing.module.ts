@@ -5,6 +5,7 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
 import { LogInComponent } from './pages/log-in/log-in.component';
 import { RecoverPasswordComponent } from './pages/recover-password/recover-password.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { AlbumComponent } from './pages/album/album.component'
 
 const routes: Routes = [
   { path: '', component: LogInComponent, pathMatch: 'full'},
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'dashboard', component: DashboardPageComponent},
   { path: 'recover-password', component: RecoverPasswordComponent},
+  { path: 'album', component: AlbumComponent},
 ];
 
 @NgModule({
