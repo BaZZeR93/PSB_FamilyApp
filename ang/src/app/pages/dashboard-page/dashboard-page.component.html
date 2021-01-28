@@ -38,7 +38,7 @@
         </div>
       </div>
     </div>
-</div>  
+</div>
 </div>
 
 <div class="row full-row">
@@ -138,7 +138,70 @@
     </div>
 
     <div *ngIf="selectedContent === ContentEnum.ToAlbum" class="card mr-5 mt-3 table-responsive">
-      ToAlbum
+      <!-- Container for the image gallery -->
+      <div class="container">
+        <!-- Full-width images with number text -->
+        <div class="mySlides" style="display: block;">
+          <div class="numbertext">1 / 6</div>
+          <img src="./assets/img/holiday1.jpg" style="height:350px;">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">2 / 6</div>
+          <img src="./assets/img/holiday2.jpg" style="height:350px;">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">3 / 6</div>
+          <img src="./assets/img/holiday3.jpg" style="height:350px;">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">4 / 6</div>
+          <img src="./assets/img/holiday4.jpg" style="height:350px;">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">5 / 6</div>
+          <img src="./assets/img/holiday5.jpg" style="height:350px;">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">6 / 6</div>
+          <img src="./assets/img/holiday6.jpg" style="height:350px;">
+        </div>
+
+        <!-- Next and previous buttons -->
+        <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+        <a class="next" (click)="plusSlides(1)">&#10095;</a>
+
+        <!-- Image text -->
+        <div class="caption-container">
+          <p id="caption">July 2018</p>
+        </div>
+
+        <!-- Thumbnail images -->
+        <div class="row">
+          <div class="column2">
+            <img class="demo cursor active" src="./assets/img/holiday1.jpg" style="width:100%" (click)="currentSlide(1)" id="July 2018">
+          </div>
+          <div class="column2">
+            <img class="demo cursor" src="./assets/img/holiday2.jpg" style="width:100%" (click)="currentSlide(2)" id="August 2017">
+          </div>
+          <div class="column2">
+            <img class="demo cursor" src="./assets/img/holiday3.jpg" style="width:100%" (click)="currentSlide(3)" id="June 2019">
+          </div>
+          <div class="column2">
+            <img class="demo cursor" src="./assets/img/holiday4.jpg" style="width:100%" (click)="currentSlide(4)" id="May 2016">
+          </div>
+          <div class="column2">
+            <img class="demo cursor" src="./assets/img/holiday5.jpg" style="width:100%" (click)="currentSlide(5)" id="August 2018">
+          </div>
+          <div class="column2">
+            <img class="demo cursor" src="./assets/img/holiday6.jpg" style="width:100%" (click)="currentSlide(6)" id="April 2019">
+          </div>
+        </div>
+      </div>
     </div>
 
     <div *ngIf="selectedContent === ContentEnum.FamilyTree" class="card mr-5 mt-3 table-responsive">
