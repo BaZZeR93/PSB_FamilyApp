@@ -33,11 +33,16 @@ html, body{
     align-items: center;
   }
 
-  /* .col-md-5 {
+  .col-md-5 {
+    align-items: center;
+  }
 
-      padding-left: 10em;
-      padding-right: 10em;
-  } */
+  .col-sm-2 {
+    padding: 0em;
+    margin: 0em;
+    align-items: flex-start;
+  }
+
 
   .btn-primary {
     background-color: #22B573 !important;
