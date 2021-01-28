@@ -35,6 +35,10 @@ export class DashboardPageComponent implements OnInit {
     if (tab === Content.Budget) {
       this.getUsers();
     }
+    if (tab === Content.FamilyTree) {
+      this.router.navigate(['/dashboard/familytree']);
+    }
+    
     if (tab == Content.ToAlbum) {
       this.slideIndex = 1;
     }
